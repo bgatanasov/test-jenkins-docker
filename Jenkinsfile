@@ -3,7 +3,7 @@ pipeline {
 	
 	  tools
     {
-       maven "Maven"
+       maven "Maven 3.6.3"
     }
  stages {
       stage('checkout') {
