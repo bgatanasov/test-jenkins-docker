@@ -20,7 +20,17 @@ pipeline {
           }
         }
         
-
+  stage('Delete all images and containares before build and start new ') {
+           
+            steps 
+			{
+                sh "docker container rm tomcat01 tomcat02 --force"
+                sh "docker image rm bgatanasov/payara01 --force"	
+                sh "docker  image rm tomcat --force"
+		sh "docker  image rm payara01 --force"
+            }
+        }
+	 
   stage('Docker Build and Tag') {
            steps {
               
