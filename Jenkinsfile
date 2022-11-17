@@ -46,14 +46,14 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 48003:8080 bgatanasov/payara01"
+                sh "docker run --name tomcat01 -d -p 48003:8080 bgatanasov/payara01"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H unix:///var/run/docker.sock run -d -p 48004:8080 bgatanasov/payara01"
+                sh "docker -H unix:///var/run/docker.sock --name tomcat02 run -d -p 48004:8080 bgatanasov/payara01"
  
             }
         }
