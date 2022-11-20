@@ -35,8 +35,8 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t payara01:latest .' 
-                //sh 'docker tag payara01 registry-lab.lab:5000/payara01:01'
+                sh 'docker build -t payara01:01 .' 
+                //sh 'docker tag payara01:01 registry-lab.lab:5000/payara01:01'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -46,8 +46,8 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "local-docker-registry", url: "https://registry-lab.lab:5000" ]) {
-	  sh 'docker tag payara01 https://registry-lab.lab:5000/payara01:01'
-          sh  'docker pull https://registry-lab.lab:5000/payara01:01'
+	  sh 'docker tag payara01:01 registry-lab.lab:5000/payara01:01'
+          sh  'docker pull registry-lab.lab:5000/payara01:01'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
                   
