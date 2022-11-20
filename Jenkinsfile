@@ -45,7 +45,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "local-docker-registry", url: "" ]) {
+        withDockerRegistry([ credentialsId: "local-docker-registry", url: "https://registry-lab.lab:5000" ]) {
           sh  'docker pull registry-lab.lab:5000/payara01'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
